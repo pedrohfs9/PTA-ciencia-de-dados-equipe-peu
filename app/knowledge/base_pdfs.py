@@ -1,11 +1,11 @@
 from dotenv import load_dotenv
-from agno.knowledge.pdf import PDFKnowledgeBase
 from agno.vectordb.lancedb import LanceDb, SearchType
-from agno.embedder.google import GeminiEmbedder
+from agno.knowledge.knowledge import Knowledge
+from agno.knowledge.embedder.google import GeminiEmbedder
+from agno.knowledge.reader.pdf_reader import PDFReader
 
 load_dotenv()
 
-# 1. Configuração do Banco de Dados Vetorial
 vetor_db = LanceDb(
     table_name="base_produtos",
     uri="tmp/lancedb",
@@ -13,22 +13,24 @@ vetor_db = LanceDb(
     embedder=GeminiEmbedder(),
 )
 
-# 2. Criação da Base de Conhecimento
-base_conhecimento = PDFKnowledgeBase(
-    path="data/produtos",
+base_conhecimento = Knowledge(
     vector_db=vetor_db,
 )
 
 def carregar_conhecimento():
-    """
-    Lê os PDFs e salva no banco.
-    """
     print("Iniciando leitura dos PDFs...")
     try:
-        base_conhecimento.load(recreate=True)
-        print("✅ Sucesso! Base de conhecimento criada e salva em tmp/lancedb.")
+        leitor = PDFReader()
+        documentos = leitor.read("data/produtos") 
+        
+        if documentos:
+            base_conhecimento.load_documents(documentos, recreate=True)
+            print(f"✅ Sucesso! {len(documentos)} documentos carregados em tmp/lancedb.")
+        else:
+            print("⚠️ A pasta data/produtos parece vazia.")
+            
     except Exception as e:
-        print(f"❌ Ocorreu um erro durante a leitura: {e}")
+        print(f"❌ Erro ao carregar PDFs: {e}")
 
 if __name__ == "__main__":
     carregar_conhecimento()
