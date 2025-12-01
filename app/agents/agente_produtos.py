@@ -11,11 +11,12 @@ agent_storage: str = "tmp/agents.db"
 agente_especialista = Agent(
     name="Agente Especialista",
     model=Gemini(id="gemini-2.5-flash"),
-    tools=[TavilyTools()],
+    tools=[TavilyTools(), buscar_dados_exatos],
     instructions=(
-        "Você é um especialista em produtos e utiliza os PDFs técnicos da "
-        "base de conhecimento para responder perguntas relacionadas."
-    ),
+    "Você é um especialista analítico. Use a base de conhecimento (PDFs) para informações gerais. "
+    "Use a ferramenta 'consulta_data_warehouse' para buscar dados exatos (peso/dimensão) "
+    "e para responder a perguntas sobre RANKEAMENTO e ANÁLISE (mais vendido, melhor vendedor, etc.)."
+),
     knowledge=base_conhecimento,
     search_knowledge=True,
     read_chat_history=True,
