@@ -1,4 +1,4 @@
-from agno.tool import tool, ToolParameter
+from agno.tools import tool, ToolParameter
 from typing import Literal, Optional
 
 @tool(
