@@ -54,7 +54,7 @@ Este projeto foi desenvolvido para o Processo de Treinamento de Área (PTA) do C
 3. Entre na pasta do projeto:
 
    ```sh
-   cd PTA-ciencia-de-dados
+   cd PTA-ciencia-de-dados-equipe-peu
    ```
 
 <br/>
@@ -104,7 +104,7 @@ Este projeto foi desenvolvido para o Processo de Treinamento de Área (PTA) do C
 4. Acesse a aplicação em seu navegador no endereço:
 
    ```
-   http://localhost:7777
+   http://localhost:3000
    ```
 
 5. Para acessar a documentação interativa da API (Swagger UI), vá para:

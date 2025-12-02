@@ -57,3 +57,11 @@ uvicorn==0.38.0
 virtualenv==20.32.0
 youtube-transcript-api==1.2.3
 yt-dlp==2025.10.14
+google-genai>=1.52.0
+openai>=2.7.1
+tavily-python>=0.7.13
+duckdb
+sqlalchemy
+aiosqlite
+lancedb
+pypdf
