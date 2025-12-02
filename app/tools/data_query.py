@@ -1,4 +1,4 @@
-from agno.tool import tool, ToolParameter
+from agno.tools import tool # 1. Removido ToolParameter da importação
 from typing import Literal, Optional, List
 import pandas as pd
 import os
@@ -24,15 +24,15 @@ FILES = {
     ),
 )
 def buscar_dados_exatos(
-    query_type: Literal["product_detail", "top_selling", "top_seller", "product_dimensions"] = ToolParameter(
-        description="O tipo de análise ou dado exato solicitado (detalhe de produto, mais vendido, melhor vendedor, ou dimensão/peso)."
-    ),
-    product_id: Optional[str] = ToolParameter(
-        description="O ID único do produto a ser consultado (necessário apenas para dimensões e peso)."
-    ),
+    query_type: Literal["product_detail", "top_selling", "top_seller", "product_dimensions"],
+    product_id: Optional[str] = None, # 2. Removido ToolParameter e definido None como padrão
 ) -> str:
     """
     Busca dados exatos ou realiza análises de vendas/ranking unindo as quatro tabelas do DW.
+
+    Args:
+        query_type: O tipo de análise ou dado exato solicitado (detalhe de produto, mais vendido, melhor vendedor, ou dimensão/peso).
+        product_id: O ID único do produto a ser consultado (necessário apenas para dimensões e peso).
     """
     print(f"Iniciando análise complexa: {query_type}...")
     

@@ -4,6 +4,7 @@ from agno.models.google import Gemini
 from agno.tools.tavily import TavilyTools
 from agno.db.sqlite import SqliteDb
 from app.knowledge.base_pdfs import base_conhecimento
+from app.tools.data_query import buscar_dados_exatos
 
 load_dotenv()
 agent_storage: str = "tmp/agents.db"
