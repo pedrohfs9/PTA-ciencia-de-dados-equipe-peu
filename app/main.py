@@ -1,14 +1,17 @@
-from agno.playground import Playground, serve_playground_app
-from fastapi.responses import HTMLResponse, RedirectResponse
-from contextlib import asynccontextmanager
+from agno.playground import Playground
+from fastapi.responses import HTMLResponse
 from fastapi import Request
 from urllib.parse import quote
-from .agents import team
 
+# 1. Importe o agente diretamente do arquivo onde ele foi criado
+from app.agents.agente_produtos import agente_especialista
+
+# Configuração do Playground
 app = Playground(
     name="Example Playground",
     description="A playground for testing agents.",
-    teams=[team]
+    # 2. Passe o agente na lista 'agents' em vez de importar um módulo 'team'
+    agents=[agente_especialista] 
 ).get_app()
 
 @app.get("/", response_class=HTMLResponse, include_in_schema=False)
@@ -51,7 +54,7 @@ def home(request: Request):
           <h1>Agent Playground</h1>
           <p>Abra o playground em uma nova aba para testar seus agentes.</p>
           <p><strong>URL:</strong> <code>{playground_url}</code></p>
-          <p>Selecione "Teams" e em "Endpoint" digite: <code>http://{endpoint}/v1</code> ou <code>http://localhost:{port}/v1<code></p>
+          <p>Selecione "Teams" e em "Endpoint" digite: <code>http://{endpoint}/v1</code> ou <code>http://localhost:{port}/v1</code></p>
           <p style="margin-top:14px">
             <a class="button" href="{playground_url}" target="_blank" rel="noopener">Abrir Playground ↗</a>
           </p>

@@ -1,4 +1,4 @@
-agno==1.8.2
+agno>=1.8.2
 annotated-doc==0.0.3
 annotated-types==0.7.0
 anyio==4.10.0
