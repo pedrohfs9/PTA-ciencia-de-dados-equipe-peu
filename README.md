@@ -96,22 +96,35 @@ Este projeto foi desenvolvido para o Processo de Treinamento de Área (PTA) do C
     pip install -r ./requirements.txt
     ```
 
-3. Execute o projeto: 
+3. Acesse o cd: 
     ```
-    uvicorn app.main:app --port 7777
+    cd $HOME\Desktop
+    ```
+4. Clone o repositório: 
+    ```
+    npx create-agent-ui@latest
+    ```
+5. Acesse a pasta do repositório clonado: 
+    ```
+    cd agent-ui
+    ```
+6. Rode o projeto
+    ```
+    npm run dev
+    ```
+7. Abra outra aba no terminal e acesse:
+    ```
+    cd PTA-ciencia-de-dados-equipe-peu
+    ```
+8. Rode o projeto:
+    ```
+    python agentos.py
+    ```
+9. Acesse pelo navegador:
+    ```
+    http://localhost:3000/
     ```
 
-4. Acesse a aplicação em seu navegador no endereço:
-
-   ```
-   http://localhost:3000
-   ```
-
-5. Para acessar a documentação interativa da API (Swagger UI), vá para:
-
-   ```
-   http://localhost:7777/docs
-   ```
 
 <br/>
 
